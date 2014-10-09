@@ -2,4 +2,7 @@
 ==============
 文化祭に向けて神経衰弱を作ります。<br>
 AIを利用した対戦型のゲームになる予定です。<br>
-使用言語:JavaScript(HTML,CSS)
+<ul>
+<li>ゲームの内容:神経衰弱</li>
+<li>使用言語:JavaScript(HTML,CSS)</li>
+</ul>
