@@ -1,0 +1,89 @@
+@charaset "utf-8";
+
+.board {
+	width: 520px;
+	height: 665px;
+	border: solid #000000 1px;
+	border-radius: 8px;
+	position: relative;
+	margin: auto;
+	margin-top: 20px;
+	padding: 20px;
+}
+
+.board h1 {
+	font-size: 30px;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.toolbar {
+	background-color: white;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding:5px 20px;
+	line-height: 32px;
+	height: 32px;
+	border-radius: 5px;
+}
+
+button {
+	width: 120px;
+	height: 25px;
+	border-radius: 5px;
+	background-color: white;
+	border: solid black 3px;
+}
+
+button:hover {
+	background-color: black;
+	color: white;
+}
+
+#restartbtn {
+	float: right;
+	margin-top: 3.5px;
+	margin-bottom: 3.5px;
+}
+
+#clear {
+	clear: both;
+}
+
+.cards {
+	overflow: auto;
+	width: 520px;
+}
+
+.cards li img {
+	width: 100px;
+	height: 140px;
+	margin-bottom: 5px;
+	margin-right: 5px;
+}
+
+.cards li img:hover {
+	border: solid 2.5px blue;
+	border-top: solid 3.5px blue;
+	border-bottom: solid 2.5px blue;
+	width: 95px;
+	height: 133px;
+	border-radius: 5px;
+}
+
+.cards li {
+	float: left;
+}
+
+.cards li img.lastimg {
+	margin-right: 0px;
+}
+
+#title {
+	display: block;
+}
+
+#game {
+	background-color: green;
+	display: none;
+}
