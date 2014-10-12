@@ -1,5 +1,8 @@
 var carddata = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10];
 var clickcount = 0;
+var cardimg = [];
+var images;
+var cardback;
 
 window.addEventListener('load', init, false);
 
@@ -8,6 +11,13 @@ function init() {
 	btn.addEventListener('click', gamestartclick, false);
 	btn = document.getElementById('restartbtn');
 	btn.addEventListener('click', restartclick, false);
+	for (var i = 0; i < 10; i++) {
+		cardimg[i] = document.createElement('img');
+		cardimg[i].src = 'img/' + (i + 1) + '.png';
+		images = document.querySelectorAll('img');
+	}
+	cardback = document.createElement('img');
+	cardback.src = 'img/cardback.png';
 }
 
 function gamestartclick(e) {
@@ -17,6 +27,9 @@ function gamestartclick(e) {
 }
 
 function restartclick(e) {
+	for (var i = 0; i < images.length; i++) {
+		images[i].src = cardback.src;
+	}
 	gamestart();
 }
 
@@ -28,9 +41,6 @@ function gamestart() {
 		carddata[a] = carddata[b];
 		carddata[b] = c;
 	}
-
-	var images = document.querySelectorAll('img');
-
 	for (i = 0; i < images.length; i++) {
 		images[i].addEventListener('click', imgclick, false);
 		images[i].cardid = carddata[i];
@@ -38,5 +48,8 @@ function gamestart() {
 }
 
 function imgclick(e) {
-	alert(e.target.cardid);
+	if (clickcount === 0) {
+		var clickimg = e.target;
+		clickimg.src = cardimg[clickimg.cardid - 1].src;
+	}
 }
