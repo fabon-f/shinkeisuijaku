@@ -1,14 +1,46 @@
-@charaset "utf-8";
+@charset "utf-8";
+
+form div {
+	margin: 20px;
+}
+
+.radios input {
+	display: none;
+}
+
+.radios label {
+	display: block;
+	float: left;
+	cursor: pointer;
+	width: 100px;
+	height: 24px;
+	background: #c0c0c0;
+	margin-right: 20px;
+	padding-top: 2px;
+	text-align: center;
+	font-size: 20px;
+	border-radius: 5px;
+}
+
+.radios input:checked + label {
+	background: #4169e1;
+	color: white;
+}
+
+.heading {
+	font-size: 30px;
+	margin-bottom: 10px;
+}
 
 .board {
-	width: 520px;
-	height: 665px;
+	width: 880px;
 	border: solid #000000 1px;
 	border-radius: 8px;
 	position: relative;
 	margin: auto;
 	margin-top: 20px;
 	padding: 20px;
+	box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.8);
 }
 
 .board h1 {
@@ -30,12 +62,24 @@
 button {
 	width: 120px;
 	height: 25px;
+	padding: 2.5px;
+	line-height: 15px;
 	border-radius: 5px;
 	background-color: white;
 	border: solid black 3px;
 }
 
-button:hover {
+ input[type="button"] {
+ 	width: 100px;
+	height: 25px;
+	padding: 2.5px;
+	line-height: 15px;
+	border-radius: 5px;
+	background-color: white;
+	border: solid black 3px;
+ }
+
+button:hover, input[type="button"]:hover {
 	background-color: black;
 	color: white;
 }
@@ -46,37 +90,66 @@ button:hover {
 	margin-bottom: 3.5px;
 }
 
-#clear {
+.clear {
 	clear: both;
 }
 
 .cards {
 	overflow: auto;
-	width: 520px;
+	width: 880px;
 }
 
 .cards li img {
 	width: 100px;
 	height: 140px;
-	margin-bottom: 5px;
+	margin-bottom: 10px;
 	margin-right: 5px;
+	margin-left: 5px;
 }
 
-.cards li img:hover {
-	border: solid 2.5px blue;
-	border-top: solid 3.5px blue;
-	border-bottom: solid 2.5px blue;
+.cardhover:hover {
+	border-right: solid 2px blue;
+	border-left: solid 3px blue;
+	border-top: solid 3px blue;
+	border-bottom: solid 4px blue;
 	width: 95px;
 	height: 133px;
 	border-radius: 5px;
+	margin-bottom: 10px;
+	margin-right: 5px;
+	margin-left: 5px;
 }
 
 .cards li {
 	float: left;
 }
 
-.cards li img.lastimg {
-	margin-right: 0px;
+#comscore, #plscore {
+	height: 100px;
+	width: 520px;
+	background-color: #fffaf0;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding: 10px 5px;
+	border-radius: 5px;
+	text-align: center;
+}
+
+#comscore img, #plscore img {
+	border: solid black 1px;
+	border-radius: 4px;
+}
+
+#comscore {
+	float: right;
+}
+
+#comcount, #plcount {
+	font-size: 30px;
+}
+
+#comcards, #plcards {
+	position: relative;
 }
 
 #title {
@@ -86,4 +159,5 @@ button:hover {
 #game {
 	background-color: green;
 	display: none;
+
 }
