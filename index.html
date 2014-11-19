@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <title>神経衰弱</title>
 <link rel="stylesheet" href="style-reset.css">
 <link rel="stylesheet" href="style.css">
@@ -16,19 +16,17 @@
 	<form>
 		<div class="radios">
 			<div class="heading">先手か後手かを選んでください</div><br>
-			<input type="radio" name="order" id="ord1"><label for="ord1">先手</label>
-			<input type="radio" name="order" id="ord2"><label for="ord2">後手</label>
-			<div class="clear"></div>
+			<input type="radio" name="order" id="ord1" value="first"><label for="ord1">先手</label>
+			<input type="radio" name="order" id="ord2" value="second"><label for="ord2">後手</label>
 		</div>
 		
 		<div class="radios">
 			<div class="heading">相手の強さを選んでください</div><br>
-			<input type="radio" name="AIlevel" id="lev1"><label for="lev1">レベル1</label>
-			<input type="radio" name="AIlevel" id="lev2"><label for="lev2">レベル2</label>
-			<input type="radio" name="AIlevel" id="lev3"><label for="lev3">レベル3</label>
-			<input type="radio" name="AIlevel" id="lev4"><label for="lev4">レベル4</label>
-			<input type="radio" name="AIlevel" id="lev5"><label for="lev5">レベル5</label>
-			<div class="clear"></div>
+			<input type="radio" name="AIlevel" id="lev1" value="level1"><label for="lev1">レベル1</label>
+			<input type="radio" name="AIlevel" id="lev2" value="level2"><label for="lev2">レベル2</label>
+			<input type="radio" name="AIlevel" id="lev3" value="level3"><label for="lev3">レベル3</label>
+			<input type="radio" name="AIlevel" id="lev4" value="level4"><label for="lev4">レベル4</label>
+			<input type="radio" name="AIlevel" id="lev5" value="level5"><label for="lev5">レベル5</label>
 		</div>
 		<input type="button" value="始める" id="startbtn">
 	</form>
@@ -42,46 +40,21 @@
 		<div id="comcards"></div>
 	</div>
 
-	<div class="clear"></div>
-
 	<div class="toolbar">
 		<span id="turn">あなたの番です</span>
 		<button id="restartbtn">もう一度始める</button>
-		<div class="clear"></div>
 	</div>
 	
-	<ul class="cards">
-		<li><img src="img/cardback.png" class="cardhover" id="card0"></li>
-		<li><img src="img/cardback.png" class="cardhover" id="card1"></li>
-		<li><img src="img/cardback.png" class="cardhover" id="card2"></li>
-		<li><img src="img/cardback.png" class="cardhover" id="card3"></li>
-		<li><img src="img/cardback.png" class="cardhover" id="card4"></li>
-		<li><img src="img/cardback.png" class="cardhover" id="card5"></li>
-		<li><img src="img/cardback.png" class="cardhover" id="card6"></li>
-		<li><img src="img/cardback.png" class="cardhover" id="card7"></li>
-		<li><img src="img/cardback.png" class="cardhover" id="card8"></li>
-		<li><img src="img/cardback.png" class="cardhover" id="card9"></li>
-		<li><img src="img/cardback.png" class="cardhover" id="card10"></li>
-		<li><img src="img/cardback.png" class="cardhover" id="card11"></li>
-		<li><img src="img/cardback.png" class="cardhover" id="card12"></li>
-		<li><img src="img/cardback.png" class="cardhover" id="card13"></li>
-		<li><img src="img/cardback.png" class="cardhover" id="card14"></li>
-		<li><img src="img/cardback.png" class="cardhover" id="card15"></li>
-		<li><img src="img/cardback.png" class="cardhover" id="card16"></li>
-		<li><img src="img/cardback.png" class="cardhover" id="card17"></li>
-		<li><img src="img/cardback.png" class="cardhover" id="card18"></li>
-		<li><img src="img/cardback.png" class="cardhover" id="card19"></li>
-		<li><img src="img/cardback.png" class="cardhover" id="card20"></li>
-		<li><img src="img/cardback.png" class="cardhover" id="card21"></li>
-		<li><img src="img/cardback.png" class="cardhover" id="card22"></li>
-		<li><img src="img/cardback.png" class="cardhover" id="card23"></li>
-	</ul>
+	<div id="cards"></div>
 
 	<div id="plscore">
 		プレイヤー：<span id="plcount">0</span>枚
 		<div id="plcards"></div>
 	</div>
-	<div class="clear"></div>
+
+	<div id="gameset">
+		
+	</div>
 </div>
 
 </body>
