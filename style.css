@@ -9,16 +9,16 @@ form div {
 }
 
 .radios label {
-	display: block;
-	float: left;
+	display: inline-block;
 	cursor: pointer;
 	width: 100px;
 	height: 24px;
 	background: #c0c0c0;
-	margin-right: 20px;
+	margin-right: 5px;
 	padding-top: 2px;
 	text-align: center;
 	font-size: 20px;
+	line-height: 20px;
 	border-radius: 5px;
 }
 
@@ -33,7 +33,7 @@ form div {
 }
 
 .board {
-	width: 880px;
+	width: 870px;
 	border: solid #000000 1px;
 	border-radius: 8px;
 	position: relative;
@@ -57,70 +57,50 @@ form div {
 	line-height: 32px;
 	height: 32px;
 	border-radius: 5px;
+	position: relative;
 }
 
-button {
+button, input[type="button"] {
 	width: 120px;
 	height: 25px;
-	padding: 2.5px;
+	padding-top: 2px;
+	padding-bottom: 3px;
 	line-height: 15px;
 	border-radius: 5px;
 	background-color: white;
 	border: solid black 3px;
 }
 
- input[type="button"] {
- 	width: 100px;
-	height: 25px;
-	padding: 2.5px;
-	line-height: 15px;
-	border-radius: 5px;
-	background-color: white;
-	border: solid black 3px;
- }
+#startbtn {
+	width: 100px;
+}
 
 button:hover, input[type="button"]:hover {
 	background-color: black;
 	color: white;
+	cursor: pointer;
 }
 
 #restartbtn {
-	float: right;
+	position: absolute;
+	right: 20px;
 	margin-top: 3.5px;
 	margin-bottom: 3.5px;
 }
 
-.clear {
-	clear: both;
+#cards {
+	position: relative;
+	width: 870px;
+	height: 450px;
 }
 
-.cards {
-	overflow: auto;
-	width: 880px;
-}
-
-.cards li img {
+#cards img {
 	width: 100px;
 	height: 140px;
-	margin-bottom: 10px;
-	margin-right: 5px;
-	margin-left: 5px;
+	position: absolute;
 }
 
-.cardhover:hover {
-	border-right: solid 2px blue;
-	border-left: solid 3px blue;
-	border-top: solid 3px blue;
-	border-bottom: solid 4px blue;
-	width: 95px;
-	height: 133px;
-	border-radius: 5px;
-	margin-bottom: 10px;
-	margin-right: 5px;
-	margin-left: 5px;
-}
-
-.cards li {
+#cards li {
 	float: left;
 }
 
@@ -133,6 +113,7 @@ button:hover, input[type="button"]:hover {
 	padding: 10px 5px;
 	border-radius: 5px;
 	text-align: center;
+	vertical-align: middle;
 }
 
 #comscore img, #plscore img {
@@ -141,15 +122,27 @@ button:hover, input[type="button"]:hover {
 }
 
 #comscore {
-	float: right;
+	margin-left: auto;
+	position: relative;
 }
 
 #comcount, #plcount {
-	font-size: 30px;
+	font-size: 25px;
 }
 
 #comcards, #plcards {
-	position: relative;
+	position: absolute;
+}
+
+#comcards {
+	left: 0;
+	right: 0;
+}
+
+.countcards {
+	width: 50px;
+	height: 70px;
+	position: absolute;
 }
 
 #title {
@@ -159,5 +152,15 @@ button:hover, input[type="button"]:hover {
 #game {
 	background-color: green;
 	display: none;
+}
 
+#gameset {
+	display: none;
+	position: absolute;
+	left: 100px;
+	top: 350px;
+	border: solid 1px black;
+	width: 640px;
+	font-size: 50px;
+	background: white;
 }
