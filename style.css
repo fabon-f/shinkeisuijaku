@@ -1,7 +1,13 @@
 @charset "utf-8";
 
 form div {
-	margin: 20px;
+	margin: 30px;
+	margin-top: 20px;
+	margin-bottom: 80px;
+}
+
+.radios {
+	position: relative;
 }
 
 .radios input {
@@ -11,14 +17,13 @@ form div {
 .radios label {
 	display: inline-block;
 	cursor: pointer;
-	width: 100px;
-	height: 24px;
+	width: 200px;
+	height: 40px;
 	background: #c0c0c0;
 	margin-right: 5px;
-	padding-top: 2px;
 	text-align: center;
-	font-size: 20px;
-	line-height: 20px;
+	font-size: 40px;
+	line-height: 40px;
 	border-radius: 5px;
 }
 
@@ -34,19 +39,25 @@ form div {
 
 .board {
 	width: 870px;
+	height: 810px;
 	border: solid #000000 1px;
 	border-radius: 8px;
 	position: relative;
 	margin: auto;
 	margin-top: 20px;
+	margin-bottom: 20px;
 	padding: 20px;
 	box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.8);
 }
 
 .board h1 {
-	font-size: 30px;
+	font-size: 40px;
+	letter-spacing: 0.8em;
 	text-align: center;
-	margin-bottom: 10px;
+}
+
+#title h1 {
+	margin-top: 20px;
 }
 
 .toolbar {
@@ -60,6 +71,24 @@ form div {
 	position: relative;
 }
 
+.balloon {
+	width: 450px;
+	height: 30px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	position: absolute;
+	margin: 0;
+	font-size: 30px;
+	line-height: 30px;
+	color: red;
+	border-radius: 6px;
+	text-align: center;
+	background: #ffdab9;
+	border: 1px solid black;
+	top: 100px;
+	display: none;
+}
+
 button, input[type="button"] {
 	width: 120px;
 	height: 25px;
@@ -68,24 +97,26 @@ button, input[type="button"] {
 	line-height: 15px;
 	border-radius: 5px;
 	background-color: white;
-	border: solid black 3px;
+	border: solid black 2px;
+	cursor: pointer;
 }
 
 #startbtn {
 	width: 100px;
+	position: absolute;
+	left: 400px;
+	top: 500px;
 }
 
-button:hover, input[type="button"]:hover {
-	background-color: black;
-	color: white;
-	cursor: pointer;
-}
-
-#restartbtn {
+#restartbtn, #backtitle {
 	position: absolute;
 	right: 20px;
 	margin-top: 3.5px;
 	margin-bottom: 3.5px;
+}
+
+#backtitle {
+	right: 150px;
 }
 
 #cards {

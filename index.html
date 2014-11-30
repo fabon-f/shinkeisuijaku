@@ -10,23 +10,27 @@
 
 <body>
 
+<noscript style="text-align:center;margin:20px;font-size:40px;">
+<p>JavaScriptを<span style="font-size:80px">オン</span>にしてください</p>
+</noscript>
+
 <div id="title" class="board">
 	<h1>神経衰弱</h1>
 
 	<form>
 		<div class="radios">
-			<div class="heading">先手か後手かを選んでください</div><br>
+			<p class="heading">先手か後手かを選んでください</p><br>
 			<input type="radio" name="order" id="ord1" value="first"><label for="ord1">先手</label>
 			<input type="radio" name="order" id="ord2" value="second"><label for="ord2">後手</label>
+			<div class="balloon" id="alertorder">先手か後手かを選んでいません！</div>
 		</div>
 		
 		<div class="radios">
-			<div class="heading">相手の強さを選んでください</div><br>
-			<input type="radio" name="AIlevel" id="lev1" value="level1"><label for="lev1">レベル1</label>
-			<input type="radio" name="AIlevel" id="lev2" value="level2"><label for="lev2">レベル2</label>
-			<input type="radio" name="AIlevel" id="lev3" value="level3"><label for="lev3">レベル3</label>
-			<input type="radio" name="AIlevel" id="lev4" value="level4"><label for="lev4">レベル4</label>
-			<input type="radio" name="AIlevel" id="lev5" value="level5"><label for="lev5">レベル5</label>
+			<p class="heading">相手の強さを選んでください</p><br>
+			<input type="radio" name="AIlevel" id="lev1" value="beginner"><label for="lev1">初級</label>
+			<input type="radio" name="AIlevel" id="lev2" value="middle"><label for="lev2">中級</label>
+			<input type="radio" name="AIlevel" id="lev3" value="higher"><label for="lev3">上級</label>
+			<div class="balloon" id="alertlevel">相手のレベルを選んでいません！</div>
 		</div>
 		<input type="button" value="始める" id="startbtn">
 	</form>
@@ -43,6 +47,7 @@
 	<div class="toolbar">
 		<span id="turn">あなたの番です</span>
 		<button id="restartbtn">もう一度始める</button>
+		<button id="backtitle">タイトルに戻る</button>
 	</div>
 	
 	<div id="cards"></div>
