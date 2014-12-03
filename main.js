@@ -33,7 +33,7 @@ var computer = {
 				comimgs.appendChild(img2);
 
 				if (player.score + computer.score === 24) {
-					setTimeout(gameset, 500);
+					setTimeout(game.end, 500);
 					return;
 				}
 				setTimeout(computer.play, 500);
@@ -76,6 +76,82 @@ var player = {
 	flag: {clickcount: 0, canclick: true},
 	score: 0
 };
+var game = {
+	start: function() {
+		var cardData = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12];
+		var length = cardData.length;
+		var i;
+		var cards = document.getElementById('cards');
+		/*for (i = 0; i < 80; i++) {
+			var a = Math.floor( Math.random() * length);
+			var b = Math.floor( Math.random() * length);
+			var c = cardData[a];
+			cardData[a] = cardData[b];
+			cardData[b] = c;
+		}*/
+
+		var images = document.querySelectorAll('#cards img');
+		length = images.length;
+		for (i = 0; i < length; i++) {
+			cards.removeChild(images[i]);
+		}
+
+		var plcards = document.querySelectorAll('#plcards img');
+		var plcardholder = document.getElementById('plcards');
+		length = plcards.length;
+		for (i = 0; i < length; i++) {
+			plcardholder.removeChild(plcards[i]);
+		}
+
+		var comcards = document.querySelectorAll('#comcards img');
+		var comcardholder = document.getElementById('comcards');
+		length = comcards.length;
+		for (i = 0; i < length; i++) {
+			comcardholder.removeChild(comcards[i]);
+		}
+
+		var img;
+		for (i = 0; i < 24; i++) {
+			img = document.createElement('img');
+			img.src = pictures.back.src;
+			img.id = 'card' + i;
+			img.style.left = (i % 8) * 110 + 'px';
+			img.style.top = Math.floor(i / 8) * 150 + 'px';
+			img.addEventListener('click', imgclick, false);
+			img.cardid = cardData[i];
+			cards.appendChild(img);
+		}
+
+		player.score = 0;
+		computer.score = 0;
+		document.getElementById('plcount').innerHTML = player.score;
+		document.getElementById('comcount').innerHTML = computer.score;
+		player.flag.clickcount = 0;
+		document.getElementById('gameset').style.display = 'none';
+		if (player.input.order === 'first') {
+			player.flag.canclick = true;
+			document.getElementById('turn').innerHTML = 'あなたの番です';
+		} else {
+			player.flag.canclick = false;
+			document.getElementById('turn').innerHTML = '相手の番です';
+			setTimeout(computer.play, 800);
+		}
+	},
+	end: function() {
+		document.getElementById('turn').innerHTML = '';
+		var gamesetScreen = document.getElementById('gameset');
+		gamesetScreen.style.display = 'block';
+		var gameResult = computer.score + ' - ' + player.score + '<br>';
+		if (player.score < computer.score) {
+			gameResult = gameResult + 'あなたの負けです';
+		} else if (player.score === computer.score) {
+			gameResult = gameResult + '引き分けです';
+		} else {
+			gameResult = gameResult + 'あなたの勝ちです';
+		}
+		gamesetScreen.innerHTML = gameResult;
+	}
+};
 
 window.addEventListener('load', init, false);
 
@@ -84,6 +160,8 @@ function init() {
 	button.addEventListener('click', gamestartClick, false);
 	button = document.getElementById('restartbtn');
 	button.addEventListener('click', restartClick, false);
+	button = document.getElementById('backtitle');
+	button.addEventListener('click', backtoTitle, false);
 	pictures.front = [];
 	for (var i = 0; i < 12; i++) {
 		pictures.front[i] = document.createElement('img');
@@ -97,9 +175,13 @@ function gamestartClick(e) {
 	//check input
 	var orders = document.getElementsByName('order');
 	var length = orders.length;
-	for (var i = 0; i < length; i++) {
+	var i;
+	var checkedorder, checkedlevel;
+	var undef;//'undef' is undefined
+	for (i = 0; i < length; i++) {
 		if (orders[i].checked) {
 			player.input.order = orders[i].value;
+			checkedorder = orders[i];
 			break;
 		}
 	}
@@ -108,85 +190,44 @@ function gamestartClick(e) {
 	for (i = 0; i < length; i++) {
 		if (levels[i].checked) {
 			player.input.level = levels[i].value;
+			checkedlevel = levels[i];
 			computer.getCards = computer.processes[player.input.level];
 			break;
 		}
 	}
 	var checked = true;
-	if (typeof player.input.order === 'undefined') {
-		document.getElementById('alertorder').style.display = 'block';
+	if (player.input.order === undef) {
+		document.getElementById('alertorder').style.visibility = 'visible';
 		checked = false;
+	} else {
+		document.getElementById('alertorder').style.visibility = 'hidden';
 	}
-	if (typeof player.input.level === 'undefined') {
-		document.getElementById('alertlevel').style.display = 'block';
+	if (player.input.level === undef) {
+		document.getElementById('alertlevel').style.visibility = 'visible';
 		checked = false;
+	} else {
+		document.getElementById('alertlevel').style.visibility = 'hidden';
 	}
 	if (checked === false) {
 		return;
 	}
 	document.getElementById('title').style.display = 'none';
 	document.getElementById('game').style.display = 'block';
+	checkedorder.checked = false;
+	checkedlevel.checked = false;
 
-	gamestart();
+	game.start();
 }
 
 function restartClick(e) {
-	var images = document.querySelectorAll('#cards img');
-	var length = images.length;
-	for (var i = 0; i < length; i++) {
-		images[i].parentNode.removeChild(images[i]);
-	}
-
-	var plcards = document.querySelectorAll('#plcards img');
-	length = plcards.length;
-	for (i = 0; i < length; i++) {
-		plcards[i].parentNode.removeChild(plcards[i]);
-	}
-	
-	var comcards = document.querySelectorAll('#comcards img');
-	length = comcards.length;
-	for (i = 0; i < length; i++) {
-		comcards[i].parentNode.removeChild(comcards[i]);
-	}
-
-	document.getElementById('comcount').innerHTML = 0;
-	document.getElementById('plcount').innerHTML = 0;
-	document.getElementById('turn').innerHTML = 'あなたの番です';
-	document.getElementById('gameset').style.display = 'none';
-	player.flag.canclick = 0;
-	gamestart();
+	game.start();
 }
 
-function gamestart() {
-	var cardData = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12];
-	var length = cardData.length;
-	var i;
-	/*for (i = 0; i < 80; i++) {
-		var a = Math.floor( Math.random() * length);
-		var b = Math.floor( Math.random() * length);
-		var c = cardData[a];
-		cardData[a] = cardData[b];
-		cardData[b] = c;
-	}*/
-
-	var img;
-	for (i = 0; i < 24; i++) {
-		img = document.createElement('img');
-		img.src = pictures.back.src;
-		img.id = 'card' + i;
-		img.style.left = (i % 8) * 110 + 'px';
-		img.style.top = Math.floor(i / 8) * 150 + 'px';
-		cards.appendChild(img);
-	}
-
-	var images = document.querySelectorAll('#cards img');
-	for (i = 0; i < length; i++) {
-		images[i].addEventListener('click', imgclick, false);
-		images[i].cardid = cardData[i];
-	}
-	player.score = 0;
-	computer.score = 0;
-	player.flag.canclick = true;
+function backtoTitle() {
+	document.getElementById('title').style.display = 'block';
+	document.getElementById('game').style.display = 'none';
+	player.input.order = undefined;
+	player.input.level = undefined;
 }
 
 function imgclick(e) {
@@ -231,7 +272,7 @@ function imgclick(e) {
 						player.flag.canclick = true;
 
 						if (player.score + computer.score === 24) {
-							setTimeout(gameset, 500);
+							setTimeout(game.end, 500);
 						}
 					} else {
 						//if cards are different number
@@ -244,19 +285,4 @@ function imgclick(e) {
 			}
 		}
 	}
-}
-
-function gameset() {
-	document.getElementById('turn').innerHTML = '';
-	var gamesetScreen = document.getElementById('gameset');
-	gamesetScreen.style.display = 'block';
-	var gameResult = computer.score + ' - ' + player.score + '<br>';
-	if (player.score < computer.score) {
-		gameResult = gameResult + 'あなたの負けです';
-	} else if (player.score === computer.score) {
-		gameResult = gameResult + '引き分けです';
-	} else {
-		gameResult = gameResult + 'あなたの勝ちです';
-	}
-	gamesetScreen.innerHTML = gameResult;
 }

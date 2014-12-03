@@ -1,13 +1,9 @@
 @charset "utf-8";
 
-form div {
+.radios {
 	margin: 30px;
 	margin-top: 20px;
-	margin-bottom: 80px;
-}
-
-.radios {
-	position: relative;
+	margin-bottom: 40px;
 }
 
 .radios input {
@@ -76,8 +72,8 @@ form div {
 	height: 30px;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	position: absolute;
 	margin: 0;
+	margin-top: 30px;
 	font-size: 30px;
 	line-height: 30px;
 	color: red;
@@ -85,8 +81,7 @@ form div {
 	text-align: center;
 	background: #ffdab9;
 	border: 1px solid black;
-	top: 100px;
-	display: none;
+	visibility: hidden;
 }
 
 button, input[type="button"] {
@@ -129,10 +124,6 @@ button, input[type="button"] {
 	width: 100px;
 	height: 140px;
 	position: absolute;
-}
-
-#cards li {
-	float: left;
 }
 
 #comscore, #plscore {
