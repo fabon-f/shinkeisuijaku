@@ -82,13 +82,14 @@ var game = {
 		var length = cardData.length;
 		var i;
 		var cards = document.getElementById('cards');
-		/*for (i = 0; i < 80; i++) {
-			var a = Math.floor( Math.random() * length);
-			var b = Math.floor( Math.random() * length);
-			var c = cardData[a];
-			cardData[a] = cardData[b];
-			cardData[b] = c;
-		}*/
+		//shuffle by Fisher-Yates algorithm
+		for (i = length - 1; i > 0; i--) {
+			var j = Math.floor(Math.random() * (i + 1));
+			var a = cardData[i];
+			cardData[i] = cardData[j];
+			cardData[j] = a;
+		}
+		computer.memory = [];
 
 		var images = document.querySelectorAll('#cards img');
 		length = images.length;

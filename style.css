@@ -20,7 +20,8 @@
 	text-align: center;
 	font-size: 40px;
 	line-height: 40px;
-	border-radius: 5px;
+	padding: 3px;
+	border-radius: 3px;
 }
 
 .radios input:checked + label {
@@ -31,6 +32,51 @@
 .heading {
 	font-size: 30px;
 	margin-bottom: 10px;
+}
+
+.balloon {
+	width: 450px;
+	height: 30px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin: 0;
+	margin-top: 30px;
+	font-size: 30px;
+	line-height: 30px;
+	color: red;
+	border-radius: 6px;
+	text-align: center;
+	background: #ffdab9;
+	border: 1px solid black;
+	visibility: hidden;
+}
+
+button {
+	width: 120px;
+	height: 25px;
+	padding-top: 2px;
+	padding-bottom: 3px;
+	font-size: 15px;
+	line-height: 15px;
+	color: white;
+	border-radius: 2px;
+	background-color: #6495ed;
+	border-width: 1px;
+	border-color: #0053a6 #0053a6 black black;
+	text-shadow: 1px 1px 0 rgba(0, 0, 0, .6);
+	cursor: pointer;
+	background: linear-gradient(to bottom,#6495ed 0,#4169e1 100%);
+	box-shadow: 0 1px 0 0 rgba(256,256,256,0.5) inset;
+}
+
+button:hover {
+	/*box-shadow: 0 0 5px 0 rgba(0,0,0,0.8)*/
+	background: #6495ed;
+}
+
+button:active {
+	background: #4169e1;
+	box-shadow: none;
 }
 
 .board {
@@ -65,35 +111,6 @@
 	height: 32px;
 	border-radius: 5px;
 	position: relative;
-}
-
-.balloon {
-	width: 450px;
-	height: 30px;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	margin: 0;
-	margin-top: 30px;
-	font-size: 30px;
-	line-height: 30px;
-	color: red;
-	border-radius: 6px;
-	text-align: center;
-	background: #ffdab9;
-	border: 1px solid black;
-	visibility: hidden;
-}
-
-button, input[type="button"] {
-	width: 120px;
-	height: 25px;
-	padding-top: 2px;
-	padding-bottom: 3px;
-	line-height: 15px;
-	border-radius: 5px;
-	background-color: white;
-	border: solid black 2px;
-	cursor: pointer;
 }
 
 #startbtn {

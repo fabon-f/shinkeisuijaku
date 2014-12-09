@@ -16,24 +16,21 @@
 
 <div id="title" class="board">
 	<h1>神経衰弱</h1>
-
-	<form>
-		<div class="radios">
-			<p class="heading">先手か後手かを選んでください</p><br>
-			<input type="radio" name="order" id="ord1" value="first"><label for="ord1">先手</label>
-			<input type="radio" name="order" id="ord2" value="second"><label for="ord2">後手</label>
-			<div class="balloon" id="alertorder">先手か後手かを選んでいません！</div>
-		</div>
-		
-		<div class="radios">
-			<p class="heading">相手の強さを選んでください</p><br>
-			<input type="radio" name="AIlevel" id="lev1" value="beginner"><label for="lev1">初級</label>
-			<input type="radio" name="AIlevel" id="lev2" value="middle"><label for="lev2">中級</label>
-			<input type="radio" name="AIlevel" id="lev3" value="higher"><label for="lev3">上級</label>
-			<div class="balloon" id="alertlevel">相手のレベルを選んでいません！</div>
-		</div>
-		<input type="button" value="始める" id="startbtn">
-	</form>
+	<div class="radios">
+		<p class="heading">先手か後手かを選んでください</p><br>
+		<input type="radio" name="order" id="ord1" value="first"><label for="ord1">先手</label>
+		<input type="radio" name="order" id="ord2" value="second"><label for="ord2">後手</label>
+		<div class="balloon" id="alertorder">先手か後手かを選んでいません！</div>
+	</div>
+	
+	<div class="radios">
+		<p class="heading">相手の強さを選んでください</p><br>
+		<input type="radio" name="AIlevel" id="lev1" value="beginner"><label for="lev1">初級</label>
+		<input type="radio" name="AIlevel" id="lev2" value="middle"><label for="lev2">中級</label>
+		<input type="radio" name="AIlevel" id="lev3" value="higher"><label for="lev3">上級</label>
+		<div class="balloon" id="alertlevel">相手のレベルを選んでいません！</div>
+	</div>
+	<button type="button" id="startbtn">始める</button>
 </div>
 
 <div class="board" id="game">
