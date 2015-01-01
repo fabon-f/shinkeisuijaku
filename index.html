@@ -8,27 +8,25 @@
 <script src="main.js"></script>
 </head>
 
-<body>
+<body ontouchstart="">
 
-<noscript style="text-align:center;margin:20px;font-size:40px;">
-<p>JavaScriptを<span style="font-size:80px">オン</span>にしてください</p>
-</noscript>
+<noscript style="text-align:center;margin:20px;font-size:40px;"><p>ゲームを遊ぶためにはJavaScriptが必要です。JavaScriptを<span style="font-size:80px">オン</span>にしてください!</p></noscript>
 
 <div id="title" class="board">
 	<h1>神経衰弱</h1>
 	<div class="radios">
 		<p class="heading">先手か後手かを選んでください</p><br>
-		<input type="radio" name="order" id="ord1" value="first"><label for="ord1">先手</label>
-		<input type="radio" name="order" id="ord2" value="second"><label for="ord2">後手</label>
-		<div class="balloon" id="alertorder">先手か後手かを選んでいません！</div>
+		<input type="radio" name="order" id="ord1" value="first"><label for="ord1" onclick="">先手</label>
+		<input type="radio" name="order" id="ord2" value="second"><label for="ord2" onclick="">後手</label>
+		<p class="balloon" id="alertorder">先手か後手かを選んでいません！</p>
 	</div>
 	
 	<div class="radios">
 		<p class="heading">相手の強さを選んでください</p><br>
-		<input type="radio" name="AIlevel" id="lev1" value="beginner"><label for="lev1">初級</label>
-		<input type="radio" name="AIlevel" id="lev2" value="middle"><label for="lev2">中級</label>
-		<input type="radio" name="AIlevel" id="lev3" value="higher"><label for="lev3">上級</label>
-		<div class="balloon" id="alertlevel">相手のレベルを選んでいません！</div>
+		<input type="radio" name="AIlevel" id="lev1" value="beginner"><label for="lev1" onclick="">初級</label>
+		<input type="radio" name="AIlevel" id="lev2" value="middle"><label for="lev2" onclick="">中級</label>
+		<input type="radio" name="AIlevel" id="lev3" value="higher"><label for="lev3" onclick="">上級</label>
+		<p class="balloon" id="alertlevel">相手のレベルを選んでいません！</p>
 	</div>
 	<button type="button" id="startbtn">始める</button>
 </div>

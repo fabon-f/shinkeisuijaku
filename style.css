@@ -1,5 +1,9 @@
 @charset "utf-8";
 
+body {
+	-webkit-user-select:none;
+}
+
 .radios {
 	margin: 30px;
 	margin-top: 20px;
@@ -35,8 +39,9 @@
 }
 
 .balloon {
-	width: 450px;
+	width: 500px;
 	height: 30px;
+	padding: 0;
 	padding-top: 5px;
 	padding-bottom: 5px;
 	margin: 0;
@@ -54,6 +59,7 @@
 button {
 	width: 120px;
 	height: 25px;
+	padding: 0;
 	padding-top: 2px;
 	padding-bottom: 3px;
 	font-size: 15px;
@@ -67,10 +73,10 @@ button {
 	cursor: pointer;
 	background: linear-gradient(to bottom,#6495ed 0,#4169e1 100%);
 	box-shadow: 0 1px 0 0 rgba(256,256,256,0.5) inset;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
 }
 
 button:hover {
-	/*box-shadow: 0 0 5px 0 rgba(0,0,0,0.8)*/
 	background: #6495ed;
 }
 
@@ -115,9 +121,9 @@ button:active {
 
 #startbtn {
 	width: 100px;
-	position: absolute;
+	position: relative;
 	left: 400px;
-	top: 500px;
+	top: -30px;
 }
 
 #restartbtn, #backtitle {
@@ -196,8 +202,8 @@ button:active {
 #gameset {
 	display: none;
 	position: absolute;
-	left: 100px;
-	top: 350px;
+	left: 150px;
+	top: 400px;
 	border: solid 1px black;
 	width: 640px;
 	font-size: 50px;
