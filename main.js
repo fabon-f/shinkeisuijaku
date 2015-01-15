@@ -1,3 +1,5 @@
+/* global document, setTimeout, window */
+'use strict';
 var pictures = {};
 var computer = {
 	play: function() {
@@ -36,36 +38,115 @@ var computer = {
 					setTimeout(game.end, 500);
 					return;
 				}
+				computer.updateMemories('remove', card1, card2);
 				setTimeout(computer.play, 500);
 			} else {
 				card1.src = pictures.back.src;
 				card2.src = pictures.back.src;
+				computer.updateMemories('add', card1, card2);
 				player.flag.canclick = true;
 				document.getElementById('turn').innerHTML = 'あなたの番です';
 			}
 		}, 1000);
 	},
 	memory: [],
+	updateMemories: function(mode, card1, card2) {
+		var memory = computer.memory;
+		var length = memory.length, i;
+		var hasCard1 = false, hasCard2 = false;
+		var level = player.input.level;
+		if (mode === 'add') {
+			for (i = 0; i < length; i++) {
+				if (memory[i] === card1) { hasCard1 = true; }
+				if (memory[i] === card2) { hasCard2 = true; }
+			}
+			if (!hasCard1) {
+				memory[length] = card1;
+				length++;
+			}
+			if (!hasCard2) {
+				memory[length] = card2;
+			}
+			if (level === 'beginner') {
+				while (length > 6) {
+					memory.splice(0, 1);
+					length--;
+				}
+			} else if (level === 'middle') {
+				while (length > 10) {
+					memory.splice(0, 1);
+					length--;
+				}
+			} else if (level === 'higher') {}
+		} else if (mode === 'remove') {
+			for (i = 0; i < length; i++) {
+				if (memory[i] === card1 || memory[i] === card2) {
+					memory.splice(i, 1);
+					i--;
+				}
+			}
+		}
+	},
+	checkSameCards: function() {
+		var memory = computer.memory;
+		var i, length = memory.length;
+		var index;
+		var numbers = memory.map(function(card) {
+			return card.cardid;
+		});
+		for (i = 0; i < length; i++) {
+			index = numbers.indexOf(numbers[i], i + 1);
+			if (index !== -1) {
+				return [i, index];
+			}
+		}
+		return null;
+	},
 	processes: {
 		beginner: function() {
-			var images = document.querySelectorAll('#cards img');
-			var length = images.length;
-			var a = Math.floor(Math.random() * length);
-			var b = Math.floor(Math.random() * (length - 1));
-			if (a <= b) {
-				b = b + 1;
-			}
+			var index = computer.checkSameCards();
 			var cards = [];
-			cards[0] = images[a];
-			cards[1] = images[b];
+			if (index) {
+				cards[0] = computer.memory[index[0]];
+				cards[1] = computer.memory[index[1]];
+			} else {
+				var images = document.querySelectorAll('#cards img');
+				var length = images.length;
+				var a = Math.floor(Math.random() * length);
+				var b = Math.floor(Math.random() * (length - 1));
+				if (a <= b) {
+					b = b + 1;
+				}
+				cards[0] = images[a];
+				cards[1] = images[b];
+			}
 			return cards;
 		},
 		middle: function() {
-
+			var memory = computer.memory;
+			var index = computer.checkSameCards();
+			var cards = [];
+			var images;
+			if (index) {
+				cards[0] = memory[index[0]];
+				cards[1] = memory[index[1]];
+			} else {
+				images = Array.prototype.slice.call(document.querySelectorAll('#cards img'));
+				images = images.filter(function(card) {
+					return memory.indexOf(card.cardid) === -1;
+				});
+				var length = images.length;
+				var a = Math.floor(Math.random() * length);
+				var b = Math.floor(Math.random() * (length - 1));
+				if (a <= b) {
+					b = b + 1;
+				}
+				cards[0] = images[a];
+				cards[1] = images[b];
+			}
+			return cards;
 		},
-		higher: function() {
-
-		}
+		higher: function() {}
 	},
 	getCards: undefined,
 	score: 0
@@ -82,6 +163,7 @@ var game = {
 		var length = cardData.length;
 		var i,a,j;
 		var cards = document.getElementById('cards');
+		var removePlayerCards, removeComputerCards;
 		//shuffle by Fisher-Yates algorithm
 		for (i = length - 1; i > 0; i--) {
 			j = Math.floor(Math.random() * (i + 1));
@@ -91,18 +173,18 @@ var game = {
 		}
 		computer.memory = [];
 
-		function removePlayerCards() {
+		removePlayerCards = function() {
 			var plcards = document.getElementById('plcards');
 			var node = plcards.cloneNode(false);
 			plcards.parentNode.replaceChild(node, plcards);
-		}
+		};
 		removePlayerCards();
 
-		function removeComputerCards() {
+		removeComputerCards = function() {
 			var comcards = document.getElementById('comcards');
 			var node = comcards.cloneNode(false);
 			comcards.parentNode.replaceChild(node, comcards);
-		}
+		};
 		removeComputerCards();
 
 		(function () {
@@ -270,13 +352,18 @@ function imgclick(e) {
 
 				if (player.score + computer.score === 24) {
 					setTimeout(game.end, 500);
+					return;
 				}
+
+				computer.updateMemories('remove', player.click.first, player.click.second);
+
 			} else {
 				//if cards are different number
 				player.click.first.src = pictures.back.src;
 				player.click.second.src = pictures.back.src;
 				document.getElementById('turn').innerHTML = '相手の番です';
 				setTimeout(computer.play, 500);
+				computer.updateMemories('add', player.click.first, player.click.second);
 			}
 		}, 500);
 	}
