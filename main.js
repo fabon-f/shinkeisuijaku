@@ -1,11 +1,11 @@
 /* global document, location, Promise, setTimeout */
 'use strict';
-// (function() {
+(function() {
 	var error = function(error) {
 		console.error(error);
 	};
 	var CARD_COUNT = 24;
-	var WAIT_TIME = 500;
+	var WAIT_TIME = 1200;
 	var pictures = {
 		front: []
 	};
@@ -242,6 +242,7 @@
 			document.getElementById('plcount').innerHTML = player.score;
 			document.getElementById('comcount').innerHTML = computer.score;
 			document.getElementById('gameset').style.display = 'none';
+			shuffle();
 			if (playerOrder === 'first') {
 				player.canClick = true;
 				document.getElementById('turn').innerHTML = 'あなたの番です';
@@ -375,6 +376,17 @@
 		}
 	};
 
+	var shuffle = function() {
+		var data = cards.data;
+		var length = data.length;
+		for(var i = length - 1; i > 0; i--) {
+			var j = Math.floor(Math.random() * (i + 1));
+			var tmp = data[i];
+			data[i] = data[j];
+			data[j] = tmp;
+		}
+	};
+
 	var init = function() {
 		if (typeof Promise !== 'function') {
 			alertError({
@@ -430,4 +442,4 @@
 	} else {
 		init();
 	}
-// }) ();
+}) ();
