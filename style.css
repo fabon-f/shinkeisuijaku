@@ -1,7 +1,10 @@
 @charset "utf-8";
 
 body {
+	-ms-user-select: none;
+	-moz-user-select: none;
 	-webkit-user-select:none;
+	user-select: none;
 }
 
 .radios {
@@ -85,6 +88,11 @@ button:active {
 	box-shadow: none;
 }
 
+button.disabled {
+	cursor: auto;
+	background: gray;
+}
+
 .board {
 	width: 870px;
 	height: 810px;
@@ -138,15 +146,19 @@ button:active {
 }
 
 #cards {
-	position: relative;
 	width: 870px;
-	height: 450px;
+	height: 470px;
+}
+
+cards:after {
+	clear: both;
 }
 
 #cards img {
 	width: 100px;
-	height: 140px;
-	position: absolute;
+	height: 150px;
+	float: left;
+	margin: 3px;
 }
 
 #comscore, #plscore {
@@ -161,11 +173,6 @@ button:active {
 	vertical-align: middle;
 }
 
-#comscore img, #plscore img {
-	border: solid black 1px;
-	border-radius: 4px;
-}
-
 #comscore {
 	margin-left: auto;
 	position: relative;
@@ -173,21 +180,6 @@ button:active {
 
 #comcount, #plcount {
 	font-size: 25px;
-}
-
-#comcards, #plcards {
-	position: absolute;
-}
-
-#comcards {
-	left: 0;
-	right: 0;
-}
-
-.countcards {
-	width: 50px;
-	height: 70px;
-	position: absolute;
 }
 
 #title {

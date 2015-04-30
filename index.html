@@ -5,7 +5,6 @@
 <title>神経衰弱</title>
 <link rel="stylesheet" href="style-reset.css">
 <link rel="stylesheet" href="style.css">
-<script src="main.js"></script>
 </head>
 
 <body ontouchstart="">
@@ -16,27 +15,26 @@
 	<h1>神経衰弱</h1>
 	<div class="radios">
 		<p class="heading">先手か後手かを選んでください</p><br>
-		<input type="radio" name="order" id="ord1" value="first"><label for="ord1" onclick="">先手</label>
-		<input type="radio" name="order" id="ord2" value="second"><label for="ord2" onclick="">後手</label>
+		<input type="radio" name="order" class="order" id="ord1" value="first"><label for="ord1" onclick="">先手</label>
+		<input type="radio" name="order" class="order" id="ord2" value="second"><label for="ord2" onclick="">後手</label>
 		<p class="balloon" id="alertorder">先手か後手かを選んでいません！</p>
 	</div>
-	
+
 	<div class="radios">
 		<p class="heading">相手の強さを選んでください</p><br>
-		<input type="radio" name="AIlevel" id="lev1" value="beginner"><label for="lev1" onclick="">初級</label>
-		<input type="radio" name="AIlevel" id="lev2" value="middle"><label for="lev2" onclick="">中級</label>
-		<input type="radio" name="AIlevel" id="lev3" value="higher"><label for="lev3" onclick="">上級</label>
+		<input type="radio" name="AIlevel" id="lev1" value="beginner" class="AIlevel"><label for="lev1" onclick="">初級</label>
+		<input type="radio" name="AIlevel" id="lev2" value="middle" class="AIlevel"><label for="lev2" onclick="">中級</label>
+		<input type="radio" name="AIlevel" id="lev3" value="higher" class="AIlevel"><label for="lev3" onclick="">上級</label>
 		<p class="balloon" id="alertlevel">相手のレベルを選んでいません！</p>
 	</div>
-	<button type="button" id="startbtn">始める</button>
+	<button type="button" id="startbtn" class="disabled">始める</button>
 </div>
 
 <div class="board" id="game">
 	<h1>神経衰弱</h1>
-	
+
 	<div id="comscore">
 		相手：<span id="comcount">0</span>枚
-		<div id="comcards"></div>
 	</div>
 
 	<div class="toolbar">
@@ -44,18 +42,17 @@
 		<button id="restartbtn">もう一度始める</button>
 		<button id="backtitle">タイトルに戻る</button>
 	</div>
-	
+
 	<div id="cards"></div>
 
 	<div id="plscore">
 		プレイヤー：<span id="plcount">0</span>枚
-		<div id="plcards"></div>
 	</div>
 
-	<div id="gameset">
-		
-	</div>
+	<div id="gameset"></div>
 </div>
+
+<script src="main.js"></script>
 
 </body>
 </html>
